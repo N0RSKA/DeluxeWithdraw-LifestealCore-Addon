@@ -7,17 +7,26 @@ import org.bukkit.entity.Player;
 import dev.norska.dw.api.DWAddonInterface;
 import dev.norska.dwaddon.lsc.LSCAddon;
 import dev.norska.lsc.LifestealCore;
+import dev.norska.lsc.api.LifestealCoreAPI;
 
 public class LSCInterface implements DWAddonInterface {
+	
+	LifestealCoreAPI LSCAPI = LifestealCore.getInstance().getAPI();
 
 	@Override
 	public void add(Player p, Double amount) {
-		LifestealCore.getInstance().getAPI().addPlayerHearts(p.getUniqueId(), amount.intValue());
+		
+		if(LSCAPI.getPlayerHearts(p.getUniqueId()) == LSCAPI.getPlayerMaxHearts(p.getUniqueId())) return;
+		
+		LSCAPI.addPlayerHearts(p.getUniqueId(), amount.intValue());
 	}
 
 	@Override
 	public void add(Player p, Integer amount) {
-		LifestealCore.getInstance().getAPI().addPlayerHearts(p.getUniqueId(), amount.intValue());
+		
+		if(LSCAPI.getPlayerHearts(p.getUniqueId()) == LSCAPI.getPlayerMaxHearts(p.getUniqueId())) return;
+		
+		LSCAPI.addPlayerHearts(p.getUniqueId(), amount.intValue());
 	}
 
 	@Override
@@ -37,17 +46,17 @@ public class LSCInterface implements DWAddonInterface {
 
 	@Override
 	public Double getCurrent(Player p) {
-		return (double) LifestealCore.getInstance().getAPI().getPlayerHearts(p.getUniqueId());
+		return (double) LSCAPI.getPlayerHearts(p.getUniqueId());
 	}
 
 	@Override
 	public Boolean has(Player p, Double amount) {
-		return LifestealCore.getInstance().getAPI().getPlayerHearts(p.getUniqueId()) >= amount;
+		return LSCAPI.getPlayerHearts(p.getUniqueId()) >= amount;
 	}
 
 	@Override
 	public Boolean has(Player p, Integer amount) {
-		return LifestealCore.getInstance().getAPI().getPlayerHearts(p.getUniqueId()) >= amount;
+		return LSCAPI.getPlayerHearts(p.getUniqueId()) >= amount;
 	}
 
 	@Override
@@ -78,12 +87,12 @@ public class LSCInterface implements DWAddonInterface {
 
 	@Override
 	public void take(Player p, Double amount) {
-		LifestealCore.getInstance().getAPI().removePlayerHearts(p.getUniqueId(), amount.intValue(), true);
+		LSCAPI.removePlayerHearts(p.getUniqueId(), amount.intValue(), true);
 	}
 
 	@Override
 	public void take(Player p, Integer amount) {
-		LifestealCore.getInstance().getAPI().removePlayerHearts(p.getUniqueId(), amount, true);
+		LSCAPI.removePlayerHearts(p.getUniqueId(), amount, true);
 
 	}
 

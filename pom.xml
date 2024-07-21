@@ -2,9 +2,17 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>dev.norska.dwaddon.lsc</groupId>
   <artifactId>DeluxeWithdrawLifestealCoreAddon</artifactId>
-  <version>1a</version>
+  <version>2024.07</version>
   <build>
     <sourceDirectory>src</sourceDirectory>
+      <resources>
+          <resource>
+              <directory>src</directory>
+              <excludes>
+                  <exclude>**/*.java</exclude>
+              </excludes>
+          </resource>
+      </resources>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -30,13 +38,13 @@
     <dependency>
         <groupId>org.spigotmc</groupId>
         <artifactId>spigot-api</artifactId>
-        <version>1.19.3-R0.1-SNAPSHOT</version>
+        <version>1.21-R0.1-SNAPSHOT</version>
         <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.24</version>
+      <version>1.18.30</version>
       <scope>provided</scope>
   </dependency>
   <dependency>
@@ -47,13 +55,13 @@
   <dependency>
     <groupId>com.github.N0RSKA</groupId>
     <artifactId>DeluxeWithdrawAPI</artifactId>
-    <version>12a</version>
+    <version>2023.12</version>
     <scope>provided</scope>
   </dependency>
   <dependency>
     <groupId>com.github.N0RSKA</groupId>
     <artifactId>LifestealCoreAPI</artifactId>
-    <version>7</version>
+    <version>2024.01-a</version>
     <scope>provided</scope>
   </dependency>
 	</dependencies>
